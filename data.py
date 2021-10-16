@@ -3,6 +3,10 @@
 X = 10
 Y = 10
 
+# class character:
+#     def __init__(self):
+#         self.location = [0,0]
+
 location = [0, 0]
 
 def move(x:int, y:int):
