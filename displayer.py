@@ -8,8 +8,8 @@ frame_count = 0
 
 
 def display():
-    # # LOG
     x, y = get_location()
+    # # LOG
     # print(x,y)
 
     # 清屏
