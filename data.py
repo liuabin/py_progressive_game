@@ -1,6 +1,6 @@
 # 定义 左上为 (0,0)
 
-X = 10
+X = 20
 Y = 10
 
 # class character:

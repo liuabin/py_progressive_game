@@ -4,6 +4,8 @@ from os import system
 
 from data import get_location, X, Y
 
+frame_count = 0
+
 
 def display():
     # # LOG
@@ -39,3 +41,11 @@ def display():
     for _ in range(X + 2):
         print('-', end='')
     print()
+    one_frame()
+
+
+def one_frame():
+    global frame_count
+
+    frame_count += 1
+    print(frame_count)

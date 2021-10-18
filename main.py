@@ -1,47 +1,52 @@
 # 游戏 main
 
+# from time import sleep
 from click import getchar
-# from keyboard import is_pressed, read_key
-
+# import keyboard
+# from keyboard import is_pressed
+# 自定义库
 from handler import handler
 from displayer import display
 
-# 常量
+# 常量表
 QUIT = 'q'
+
+# 全局变量
 
 
 def main():
-    print("hello game.")
+    init()
 
-    # 游戏初始化
     # TODO: 因为是阻塞式输入所以多一个display
     display()
 
     # 游戏主循环
-    c = ''
-    frame_count = 0
-    while True:
+    c = ['']  # 用以传引用
+    game_should_close = False
+    while not game_should_close:
         # 阻塞输入
-        c = getchar()
-        if c == QUIT:
-            break
+        game_should_close = check_input(c)
 
-        # if is_pressed('q'):
-        #     break
-
-        # c = read_key()
-        # print(c)
-
-        handler(c)
+        handler(c[0])
         display()
-        print(frame_count)
-        frame_count += 1
     final()
+
+
+def init():
+    # 游戏初始化
+    print('Game Loading...')
+    # sleep(1)
+
+
+def check_input(c: list) -> bool:
+    c[0] = getchar()
+    if c[0] == QUIT:
+        return True
 
 
 def final():
     # 游戏结束运行后
-    pass
+    print('Game Over')
 
 
 main()
