@@ -16,40 +16,38 @@ QUIT = 'q'
 
 
 def main():
-    init()
+    game_should_close = [False]
 
-    # # TODO: 因为是阻塞式输入所以多一个display
-    # display()
+    init(game_should_close)
 
     # 游戏主循环
-    # 运行时常量
+    # start_time = time()
     # c = ['']  # 用以传引用
-    game_should_close = False
-    start_time = time()
-    while not game_should_close:
-        # # 阻塞输入
-        # game_should_close = check_input(c)
+    while not game_should_close[0]:
+        f_time = time()
 
-        # 开始以固定帧率刷新
         if is_pressed('q'):
-            game_should_close = True
+            game_should_close[0] = True
         # 必须加上数据的更新
         update()
         display()
 
-        # sleep(0.2)
-        temp_time = time() - start_time
-        if temp_time >= 1.0:
-            print('每秒帧率\n消耗时间',temp_time)
-            break
+        # !锁帧 30 fps
+        while time() <= f_time + 0.033:
+            pass
+        # 检测帧数
+        # temp_time = time() - start_time
+        # if temp_time >= 1.0:
+        #     print('每秒帧率\n消耗时间',temp_time)
+        #     break
     final()
 
 
-def init():
+def init(game_should_close: list):
     # 游戏初始化
     print('Game Loading...')
-    keyboard.hook(handler)
-    # sleep(1)
+    # 注册输入 handler
+    keyboard.hook(handler(game_should_close))
 
 
 # def check_input(c: list) -> bool:
@@ -61,6 +59,12 @@ def init():
 def final():
     # 游戏结束运行后
     print('Game Over')
+
+
+def close():
+    global game_should_close
+
+    game_should_close = True
 
 
 main()

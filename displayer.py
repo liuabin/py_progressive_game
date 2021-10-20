@@ -41,11 +41,11 @@ def display():
     for _ in range(X + 2):
         print('-', end='')
     print()
-    one_frame()
+    print(_one_frame())
 
 
-def one_frame():
+def _one_frame() -> int:
     global frame_count
 
     frame_count += 1
-    print(frame_count)
+    return frame_count

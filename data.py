@@ -11,6 +11,7 @@ location = [0, 0]
 velocity = [0, 0]
 
 
+# 每帧更新数据
 def update():
     move(velocity[0], velocity[1])
 

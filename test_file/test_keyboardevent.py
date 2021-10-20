@@ -1,3 +1,4 @@
+# 测试 keyboard 的 hook 和 KeyboardEvent
 import keyboard
 
 should_close = False
