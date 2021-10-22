@@ -11,7 +11,7 @@ DIRECTIONS = {
 }
 
 
-def handler(close:list):
+def handler(close: list):
     def _handler(c: KeyboardEvent):
         if c.name in DIRECTIONS:
             _move_handler(c)
@@ -26,6 +26,8 @@ def handler(close:list):
 
 
 _move_vector = [0, 0, 0, 0]
+
+
 def _move_handler(c: KeyboardEvent):
     global _move_vector
 
@@ -35,18 +37,3 @@ def _move_handler(c: KeyboardEvent):
         _move_vector[DIRECTIONS[c.name]] = 0
     set_v(_move_vector[3]-_move_vector[2],
           _move_vector[1]-_move_vector[0])
-
-
-# 下版本删除
-def _handler(c: str):
-    print(c)  # , type(c))
-
-    # 暂时用最简单的if else
-    if c == 'w':
-        move(0, -1)
-    elif c == 's':
-        move(0, 1)
-    elif c == 'a':
-        move(-1, 0)
-    elif c == 'd':
-        move(1, 0)
